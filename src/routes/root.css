@@ -1,0 +1,33 @@
+.root-body {
+  display: flex;
+  flex: 1 0 100%;
+}
+
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  background-color: hsla(250, 5%, 75%);
+  border-right: 0.5px solid;
+  padding: 0.5rem;
+  width: 250px;
+  gap: 0.5rem;
+}
+
+.sidebar-item {
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  width: 100%;
+  background-color: hsla(250, 5%, 80%);
+  color: white;
+  font-size: 1.2rem;
+}
+
+.sidebar-item:hover {
+  background-color: hsla(250, 5%, 70%);
+}
+
+.main-content {
+  width: 100%;
+  background-color: hsla(250, 5%, 65%);
+}

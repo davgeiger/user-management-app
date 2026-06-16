@@ -1,0 +1,68 @@
+.card-list {
+  display: flex;
+}
+.card-container {
+  min-width: 400px;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.1s ease-in;
+
+  gap: 0.5rem;
+  height: 150px;
+}
+
+.card-container:hover {
+  background-color: hsla(250, 5%, 75%);
+}
+
+.profile-image {
+  width: 125px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.user-info-container {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.user-info-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.icon {
+  width: 12px;
+}
+
+.icon-delete {
+  width: 28px;
+  color: red;
+  align-self: flex-start;
+}

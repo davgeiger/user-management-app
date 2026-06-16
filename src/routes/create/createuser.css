@@ -1,0 +1,14 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem auto;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
