@@ -13,7 +13,7 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/user-management-app",
       element: <Root />,
       children: [
         { path: "overview", element: <Overview /> },
