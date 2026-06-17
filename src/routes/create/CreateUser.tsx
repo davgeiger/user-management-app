@@ -11,12 +11,11 @@ import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useContext, useEffect, useState } from "react";
 import { UserContext, type User } from "../../context/UserContext";
-import dayjs, { Dayjs } from "dayjs";
 import { useParams } from "react-router-dom";
 import { validate, type FormErrors } from "./validation";
+import dayjs from "dayjs";
 
 export default function CreateUser() {
-  const [dateValue, setDateValue] = useState<Dayjs | null>(dayjs(new Date()));
   const [gender, setGender] = useState("male");
 
   const { itemId } = useParams();
@@ -25,7 +24,7 @@ export default function CreateUser() {
   const [inputValues, setInputValues] = useState<User>({
     id: "",
     username: "",
-    birthday: dateValue,
+    birthday: null,
     email: "",
     address: "",
     gender: gender,
@@ -44,9 +43,9 @@ export default function CreateUser() {
     if (foundUser) {
       setInputValues({
         ...foundUser,
+        birthday: foundUser.birthday ? foundUser.birthday : null,
       });
 
-      setDateValue(foundUser.birthday ? dayjs(foundUser.birthday) : null);
       setGender(foundUser.gender);
     }
   }, [foundUser]);
@@ -101,9 +100,21 @@ export default function CreateUser() {
               sx={{ width: "50ch" }}
               name="birthday"
               onChange={(newValue) => {
-                setDateValue(newValue);
+                const newValues = {
+                  ...inputValues,
+                  birthday: newValue?.toISOString() ?? null,
+                };
+
+                setInputValues(newValues);
+                setErrors(validate(newValues));
               }}
-              value={dateValue}
+              slotProps={{
+                textField: {
+                  error: !!errors.birthday,
+                  helperText: errors.birthday,
+                },
+              }}
+              value={inputValues.birthday ? dayjs(inputValues.birthday) : null}
             />
           </LocalizationProvider>
         </div>
@@ -177,7 +188,7 @@ export default function CreateUser() {
                 value: {
                   ...inputValues,
                   id: itemId,
-                  birthday: dateValue,
+                  birthday: inputValues.birthday,
                   gender: gender,
                 },
               });
@@ -195,7 +206,7 @@ export default function CreateUser() {
                 type: "ADD",
                 value: {
                   ...inputValues,
-                  birthday: dateValue,
+                  birthday: inputValues.birthday,
                   gender: gender,
                 },
               });

@@ -1,11 +1,10 @@
 import { createContext } from "react";
 import type { Action } from "../hooks/UserReducer";
-import type { Dayjs } from "dayjs";
 
 export type User = {
   id: string;
   username: string;
-  birthday: Dayjs | null;
+  birthday: string | null;
   email: string;
   address: string;
   gender: string;

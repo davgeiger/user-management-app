@@ -11,25 +11,25 @@ import { usePersistedReducer } from "./hooks/usePersistedReducer";
 function App() {
   const [users, setUsers] = usePersistedReducer(userReducer, "users", []);
 
-  const router = createBrowserRouter([
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <Root />,
+        children: [
+          { path: "overview", element: <Overview /> },
+          { path: "create", element: <CreateUser /> },
+          {
+            path: "edit/:itemId",
+            element: <CreateUser />,
+          },
+        ],
+      },
+    ],
     {
-      path: "/user-management-app",
-      element: <Root />,
-      children: [
-        { path: "overview", element: <Overview /> },
-        { path: "create", element: <CreateUser /> },
-        {
-          path: "edit",
-          children: [
-            {
-              path: ":itemId",
-              element: <CreateUser />,
-            },
-          ],
-        },
-      ],
+      basename: "/user-management-app",
     },
-  ]);
+  );
 
   return (
     <UserContext.Provider value={{ users, setUsers }}>

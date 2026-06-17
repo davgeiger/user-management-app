@@ -2,6 +2,7 @@ import type { User } from "../../context/UserContext";
 
 export type FormErrors = {
   username?: string;
+  birthday?: string;
   email?: string;
   address?: string;
   telephone?: string;
@@ -14,6 +15,10 @@ export function validate(values: User): FormErrors {
 
   if (!values.username.trim()) {
     errors.username = "Username is required";
+  }
+
+  if (!values.birthday) {
+    errors.birthday = "Birthday is required";
   }
 
   if (!values.email.trim()) {
